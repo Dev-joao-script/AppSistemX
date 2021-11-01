@@ -1,0 +1,8 @@
+dc=> SistemX
+dotnet add package microsoft.entityframeworkcore
+dotnet add package microsoft.entityframeworkcore.Relational
+dotnet add package microsoft.entityframeworkcore.Tools
+dotnet add package microsoft.entityframeworkcore.SqlServer
+
+cd=> AppAngular
+npm install ngx-bootstrap
