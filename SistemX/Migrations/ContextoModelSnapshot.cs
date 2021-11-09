@@ -20,8 +20,10 @@ namespace SistemX.Migrations
 
             modelBuilder.Entity("SistemX.models.Colaborador", b =>
                 {
-                    b.Property<string>("ID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CPF")
                         .HasColumnType("nvarchar(max)");

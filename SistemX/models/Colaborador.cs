@@ -4,7 +4,8 @@ namespace SistemX.models
 {
     public class Colaborador
     {
-        public string ID { get; set; }
+    
+        public int ID { get; set; }
         public string CPF { get; set; }
         public string NOME { get; set; }
         public string NOME_MAE { get; set; }
