@@ -3,8 +3,7 @@ import { Colaboradores } from './../../Colaboradores';
 import { Component, OnInit, TemplateRef, PipeTransform } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { DecimalPipe } from '@angular/common';
-
+import { SortEvent } from 'primeng/api';
 
 @Component({
   selector: 'app-colaboradores',
@@ -32,6 +31,10 @@ export class ColaboradoresComponent implements OnInit {
   colaborador_email: string = ""
   colaborador_telefone: string = ""
 
+  cols: any[] = [];
+  rows = 10;
+  first: number = 0;
+
   constructor(
     private colaboradoresService: ColaboradoresService,
     private modalService: BsModalService
@@ -40,12 +43,18 @@ export class ColaboradoresComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.cols = [
+      {field: 'nome', header: 'Nome'},
+      {field: 'email', header: 'Email'},
+    ]
+
     this.colaboradoresService.Getall().subscribe(res => {
       this.colaboradores = res;
       this.colaboradores.sort(function (a, b) {
         return a.nascimento < b.nascimento ? -1 : a.nascimento > b.nascimento ? 1 : 0;
       })
     })
+
   }
 
   ShowCadastro(): void {
@@ -174,7 +183,7 @@ export class ColaboradoresComponent implements OnInit {
       if (days === 365) {
         return "Parabens! é Hoje!"
       }
-      return days;
+      return "Faltam: " + days + " Dias";
     }else {
       const year = YerAt + 1;
       const MyString = year + "-" + month + "-" + day;
@@ -188,9 +197,29 @@ export class ColaboradoresComponent implements OnInit {
       if (days === 365) {
         return "Parabens! é Hoje!"
       }
-      return days;
+      return "Faltam: " + days + " Dias";
     }
   }
+
+  next() {
+    this.first = this.first + this.rows;
+}
+
+prev() {
+    this.first = this.first - this.rows;
+}
+
+reset() {
+    this.first = 0;
+}
+
+isLastPage(): boolean {
+    return this.colaboradores ? this.first === (this.colaboradores.length - this.rows): true;
+}
+
+isFirstPage(): boolean {
+    return this.colaboradores ? this.first === 0 : true;
+}
 
 }
 
