@@ -9,7 +9,7 @@ cd=> AppAngular
 (Angular 12)
 npm install ngx-bootstrap
 npm i chart.js
-npm i file-saver (possivel de Utilização// necessario instalar dependencias de estenções (compativeis com ts)).
+npm i file-saver (possivel de Utilização// necessario instalar dependencias de extenções (compativeis com ts)).
 npm i primeflex
 npm i primeicons
 npm i primeng
