@@ -1,8 +1,28 @@
 dc=> SistemX
+(DotNet 5)
 dotnet add package microsoft.entityframeworkcore
 dotnet add package microsoft.entityframeworkcore.Relational
 dotnet add package microsoft.entityframeworkcore.Tools
 dotnet add package microsoft.entityframeworkcore.SqlServer
 
 cd=> AppAngular
+(Angular 12)
 npm install ngx-bootstrap
+npm i chart.js
+npm i file-saver (possivel de Utilização// necessario instalar dependencias de estenções (compativeis com ts)).
+npm i primeflex
+npm i primeicons
+npm i primeng
+npm i quill
+npm i rxjs
+npm i tslib
+npm i web-animations-js
+npm i zone.js
+
+
+Alterações conforme Escopo solicitado:
+SQL: 
+Adicionado campo ID (AutoIncremento primarykay), para que caso necessario reduzir, consumo de video, no futuro, toda a string de dados do campo CPF, seja passada com mascara, ao inves de ser tratado no front, reduzindo tambem consumo de memoria e script. Ainda mantido o tipo do campo.
+
+O projeto contem:
+Uma single-page conforme é o proposito de trabalho com narrativa angular, sendo um modal para exclusão de registros, e 2 formularios: (um com inputs para inserção e edição, e outro apenas com tags para exibição de dados.) podendo estes futuramente funcionarem, por meio de NgClass para .hide, .show ao inves de usar TS. Possui uma tabela com os dados, contendo os campos: avatar (letra), para facil localização visual do nome, Nome, email, telefone, e quantos dias faltam para o proximo aniversario.
