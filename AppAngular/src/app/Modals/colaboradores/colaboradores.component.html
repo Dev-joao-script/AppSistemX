@@ -1,16 +1,18 @@
 <div class="container p-5" *ngIf="VisibleTable">
   <div class="border border-ligth rounded p-5">
-    <button type="button" class="btn btn-sm btn-primary m-3" (click)="ShowCadastro()"><h5>Adicionar</h5></button>
+    <button type="button" class="btn btn-sm btn-primary m-3" (click)="ShowCadastro()">
+      <h5>Adicionar</h5>
+    </button>
 
     <table class="table table-striped table-bordered table-sm row-border hover" style="width:100%">
       <caption>Tabela de Colaboradores</caption>
       <thead class="blue lighten-1 black-text">
         <tr>
-        <th></th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>Dias para o Aniversario</th>
+          <th></th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Dias para o Aniversario</th>
       </thead>
       <tbody>
         <tr *ngFor="let colaborador of colaboradores">
@@ -29,11 +31,11 @@
           </td>
           <td class="Center">
             <button type="button" class="btn btn-sm btn-outline-success mx-1"
-            (click)="ShowData(colaborador.id)">Dados</button>
+              (click)="ShowData(colaborador.id)">Dados</button>
             <button type="button" class="btn btn-sm btn-outline-info mx-1"
-            (click)="Edit(colaborador.id)">Editar</button>
+              (click)="Edit(colaborador.id)">Editar</button>
             <button type="button" class="btn btn-sm btn-outline-danger mx-1"
-            (click)="ModalDelete(colaborador.nome, colaborador.id, DeletModal)">Excluir</button>
+              (click)="ModalDelete(colaborador.nome, colaborador.id, DeletModal)">Excluir</button>
           </td>
         </tr>
       </tbody>
@@ -45,7 +47,7 @@
 
 <hr>
 <br>
-<div class="container p-5" *ngIf="VisisbleNew" >
+<div class="container p-5" *ngIf="VisisbleNew">
   <div class="row">
     <div class="col-6 border-light rounded p-5 shadow" *ngIf="formulario">
       <h5>{{titulo}}</h5>
@@ -111,12 +113,13 @@
     Deseja Realmente excluir {{nomeColaborador}} ?
   </div>
   <div class="modal-footer">
-<button type="button" class="btn btn-light" (click)="modalRef?.hide()">Voltar</button>
-<button type="button" class="btn btn-outline-danger" data-dismiss="modal" (click)="Delete(IdColaborador)">Excluir</button>
+    <button type="button" class="btn btn-light" (click)="modalRef?.hide()">Voltar</button>
+    <button type="button" class="btn btn-outline-danger" data-dismiss="modal"
+      (click)="Delete(IdColaborador)">Excluir</button>
   </div>
 </ng-template>
 
-<div class="container p-5" *ngIf="VisisbleData" >
+<div class="container p-5" *ngIf="VisisbleData">
   <div class="row">
     <div class="col-6 border-light rounded p-5 shadow">
       <h5>Dados do Colaborador</h5>
@@ -130,16 +133,22 @@
       <p><strong>Data de Nascimento: </strong>
         {{colaborador_data.substring(8,10) + '/' + colaborador_data.substring(5,7) + '/' +
         colaborador_data.substring(0,4)}}</p>
-      <p><strong>CPF: </strong>{{colaborador_cpf}}</p>
+      <p><strong>CPF: </strong>{{colaborador_cpf.substring(0,3)
+        + '.' + colaborador_cpf.substring(3,6)
+        + '.' + colaborador_cpf.substring(6,9)
+        + '-' + colaborador_cpf.substring(9,11)}}</p>
       <p><strong>Nome da Mãe: </strong>{{colaborador_mae}}</p>
       <p><strong>Nome do Pai: </strong>{{colaborador_pai}}</p>
       <p><strong>Email: </strong>{{colaborador_email}}</p>
-      <p><strong>Telefone: </strong>{{colaborador_telefone}}</p>
+      <p><strong>Telefone: </strong>{{'(' + colaborador_telefone.substring(0,2) + ') '
+        + colaborador_telefone.substring(2,3)
+        + ' ' + colaborador_telefone.substring(3,7)
+        + '-' + colaborador_telefone.substring(7,11)}}</p>
       <div class="container m-2">
         <div class="row">
           <button type="button" class="btn btn-outline-secondary px-2 my-2" (click)="Back()">Voltar</button>
         </div>
       </div>
-</div>
-</div>
+    </div>
+  </div>
 </div>
